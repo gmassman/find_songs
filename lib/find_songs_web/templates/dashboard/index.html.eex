@@ -1,0 +1,30 @@
+<div>
+    <h2>Here's the artists I follow...</h2>
+    <!-- <%= render("artist_stats") %> -->
+    <%= for artist <- @artists do %>
+        <div class="row artist">
+            <div class="square col-4">
+                <img src="<%= img_url(artist) %>" class="artist">
+            </div>
+            <div class="col-8" style="margin-left:5px;">
+                <div>
+                    Artist: <a href="<%= artist.external_urls["spotify"] %>" target="_blank">
+                        <%= artist.name %>
+                    </a>
+                </div>
+                <div>
+                    Followers: <%= artist.followers["total"] %>
+                </div>
+                <div>
+                    Popularity: <%= artist.popularity %>
+                </div>
+                <div>
+                    Genres: <%= genre_list(artist) %>
+                </div>
+            </div>
+        </div>
+        <!-- <div>
+            <p><%= inspect artist %></p>
+        </div> -->
+    <% end %>
+</div>
